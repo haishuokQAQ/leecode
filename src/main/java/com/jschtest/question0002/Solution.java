@@ -1,5 +1,11 @@
-package com.jschtest;
+package com.jschtest.question0002;
 
+import java.math.BigDecimal;
+/**
+ * 因为long的范围问题所以并不能完全解决数据规模超过long的问题，如果把long改为高精度类那么就失去了本题的意义了
+ * @author kong.haishuo
+ *
+ */
 class Solution {
     public ListNode addTwoNumbers(ListNode l1, ListNode l2) {
     	long l1Num = parseLong(l1);
@@ -36,8 +42,9 @@ class Solution {
     }
     
     
+    
     public static void main(String[] args) {
-		long l = Long.parseLong("12314124142");
+		long l = Long.parseLong("5");
 		ListNode root = parseNode(l);
 		ListNode p = root;
 		while (p != null) {
@@ -45,8 +52,9 @@ class Solution {
 			p = p.next;
 		}
 		System.out.println(parseLong(root));
-		ListNode l1 = parseNode(123445124);
-		ListNode l2 = parseNode(421544321);
+		BigDecimal bd = new BigDecimal("1000000000000000000000000000001");
+		ListNode l1 = parseNode(Long.parseLong("1000000000000000000000000000001"));
+		ListNode l2 = parseNode(99);
 		long now = System.nanoTime();
 		Solution so = new Solution();
 		ListNode result = so.addTwoNumbers(l1, l2);
@@ -54,7 +62,7 @@ class Solution {
 		System.out.println(parseLong(result));
     }
     
-    static class LinkNumber{
+   /* static class LinkNumber{
         private long realValue;
         
         public void parseNum(String str){
@@ -71,5 +79,5 @@ class Solution {
         }
      
     }
-    
+    */
 }

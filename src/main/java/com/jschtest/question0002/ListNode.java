@@ -1,4 +1,4 @@
-package com.jschtest;
+package com.jschtest.question0002;
 
 public class ListNode {
 	int val;
