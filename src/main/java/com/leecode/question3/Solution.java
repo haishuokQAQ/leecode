@@ -1,4 +1,4 @@
-package com.leecode.question0003;
+package com.leecode.question3;
 
 import java.util.HashMap;
 import java.util.Map;

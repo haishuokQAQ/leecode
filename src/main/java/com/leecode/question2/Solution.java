@@ -1,4 +1,4 @@
-package com.leecode.question0002;
+package com.leecode.question2;
 
 import java.math.BigDecimal;
 /**

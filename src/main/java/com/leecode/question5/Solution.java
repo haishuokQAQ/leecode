@@ -1,4 +1,4 @@
-package com.leecode.question0005;
+package com.leecode.question5;
 
 public class Solution {
 	 public String longestPalindrome(String s) {
