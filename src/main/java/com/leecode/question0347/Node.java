@@ -4,12 +4,22 @@ public class Node {
     private Node previous;
     private Node next;
     private int counter;
+    private int value;
 
     public Node() {
     }
 
-    public Node(int counter) {
+    public Node(int counter, int value) {
         this.counter = counter;
+        this.value = value;
+    }
+
+    public int getValue() {
+        return value;
+    }
+
+    public void setValue(int value) {
+        this.value = value;
     }
 
     public Node getPrevious() {
