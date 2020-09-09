@@ -27,19 +27,34 @@ public class Solution {
             }
             while(node.getPrevious() != null && node.getCounter() > node.getPrevious().getCounter()) {
                 Node previous = node.getPrevious();
+                if (node.getNext() != null) {
+                    node.getNext().setPrevious(previous);
+                } else {
+                    tailNode = previous;
+                }
                 previous.setNext(node.getNext());
-                node.setNext(previous);
+                if (previous.getPrevious() != null) {
+                    previous.getPrevious().setNext(node);
+                } else {
+                    headNode = node;
+                }
                 node.setPrevious(previous.getPrevious());
+                node.setNext(previous);
                 previous.setPrevious(node);
+
             }
         }
+
         List<Integer> resultList = new ArrayList<>();
         int nowK = 0;
         Node pointer = headNode;
-        while (nowK < k) {
+        while (nowK < k && pointer != null) {
             resultList.add(pointer.getValue());
             if (pointer.getNext() == null || pointer.getNext().getCounter() != pointer.getCounter()) {
                 nowK ++;
+                if (resultList.size() >= k) {
+                    break;
+                }
             }
             pointer = pointer.getNext();
         }
@@ -52,7 +67,7 @@ public class Solution {
         return result;
     }
     public static void main(String[] args) {
-        int[] nums = new int[]{1,1,1,2,2,3};
-        System.out.println(Arrays.toString(new Solution().topKFrequent(nums, 2)));
+        int[] nums = new int[]{5,3,1,1,1,3,5,73,1};
+        System.out.println(Arrays.toString(new Solution().topKFrequent(nums, 3)));
     }
 }

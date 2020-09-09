@@ -36,3 +36,24 @@
 如果不存在则新建一个Node，counter为1，并插到链表最后。   
 操作完毕后对比当前Node和其上一个Node的counter值大小，若当前Node counter值大于上一节点，
 则将该节点和上一节点替换位置，直到其为头节点或上层节点的counter值大于当前节点
+#####性能优化
+
+---
+经验
+----
+本题的经验是双向链表的插入：  
+双向链表调整位置需要动6个指针，假设为A-B-C-D四个连续节点，如果B和C需要交换，则要动A的next指针、D的previous指针、B的前后指针，C的前后指针。  
+个人觉得最好的方法是先保存B和C的引用，先把A、D相关的指针修改完成。伪代码如下：(已知C的情况下)   
+```
+previous = C.previous
+if previous.previous != null 
+  previous.previous.next = C
+if C.next != null
+  C.next.previous = previous
+C.previous = previous.previous
+previous.next = C.next
+
+C.next = previous
+previous.previous = C
+
+```
