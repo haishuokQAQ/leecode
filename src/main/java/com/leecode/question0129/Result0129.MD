@@ -52,3 +52,21 @@
 --
 1. 注意临时节点一定要复刻原有的节点
 2. 注意处理边界情况（本题中root为null)
+
+---
+大神递归解法
+--
+```
+ public int sumNumbers(TreeNode root) {
+        return helper(root, 0);
+    }
+
+    public int helper(TreeNode root, int i){
+        if (root == null) return 0;
+        int temp = i * 10 + root.val;
+        if (root.left == null && root.right == null)
+            return temp;
+        return helper(root.left, temp) + helper(root.right, temp);
+    }
+```
+对每个子树来说，其结果都是左子树和右子树的结果和，然后只需要进行递归即可。
